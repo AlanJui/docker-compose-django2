@@ -31,18 +31,18 @@ cd docker-compose-django2
 
 ## 建立 Docker Compose 設定檔
 
-### 1. requirements.txt
+### 1. 建立專案所需安裝之套件設定檔案： requirements.txt 。
 
 建立 requirements.txt 檔案，並輸入以下內容：
 
 ```dockerfile
-Django>=1.11,<2.0
-psycopg2-binary
+Django==2.0
+psycopg2-binary==2.7.4
 ```
 
-### 2. Dockerfile
+### 2. 建立 Docker 腳本檔案，用以建立 Web 容器所需之 Docker Image 。
 
-建立  檔案，並輸入以下內容：
+建立 Dockerfile 檔案，並輸入以下內容：
 
 ```dockerfile
 FROM    python:3.6
@@ -60,7 +60,9 @@ RUN     pip install -r requirements.txt
 ADD     . /app/
 ```
 
-### 3. docker-compose.yml
+### 3.建立 Docker Compose 腳本檔案，用以描述待開發之「應用系統」(以下簡稱：App) 啟動時，所需之 Service 。 
+
+建立 docker-compose.yml 檔案，並輸入以下內容：
 
 ```dockerfile
 version: '3'
