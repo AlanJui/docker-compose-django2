@@ -1,6 +1,39 @@
 # 專案指引
 
+本專案用於實作可支援 Django 2 + RESTful API 之「專案模版」。
+
+本專案模版之「開發環境」規格如下：
+
+ - 支援 PostgreSQL 資料庫系統
+ - 使用 psycopg2 套件存／取資料庫系統 (套件之新名稱應改為： psycopg2-binary )
+ - 支援 Docker Compose 
+ - 支援 IDE: PyCharm 2017.3
+ - 開發人員所使用的 Host 環境可為： Mac OS/X 10.13.3 或 Windows 10
+
+---
+
+# 建立開發環境作業流程
+
+## 建立專案目錄
+
+### 1. 建立專案目錄
+
+```
+mkdir docker-compose-django2
+```
+
+
+### 2. 進入專案目錄
+
+```
+cd docker-compose-django2
+```
+
+## 建立 Docker Compose 設定檔
+
 ### 1. requirements.txt
+
+建立 requirements.txt 檔案，並輸入以下內容：
 
 ```dockerfile
 Django>=1.11,<2.0
@@ -8,6 +41,8 @@ psycopg2-binary
 ```
 
 ### 2. Dockerfile
+
+建立  檔案，並輸入以下內容：
 
 ```dockerfile
 FROM    python:3.6
