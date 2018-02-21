@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 
 from .models import Member
 from .serializers import MemberSerializer
@@ -21,3 +22,7 @@ class MemberList(APIView):
         member_list = Member.objects.all()
         serializer = MemberSerializer(member_list, many=True)
         return Response(serializer.data)
+
+class MemberViewSet(viewsets.ModelViewSet):
+    queryset = Member.objects.all()
+    serializer_class = MemberSerializer

@@ -15,13 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.routers import DefaultRouter
 
 from members.views import hello_world
-from members.views import MemberList
+from members.views import MemberList, MemberViewSet
+
+router = DefaultRouter()
+# router.register('members', MemberList)
+router.register('members', MemberViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello_world),
-    path('api/members/', MemberList.as_view()),
+    # path('api/members/', MemberList.as_view()),
+    path('api/', include(router.urls)),
 ]
