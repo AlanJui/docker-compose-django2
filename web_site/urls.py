@@ -24,7 +24,7 @@ from members.views import MemberList, MemberViewSet
 
 router = DefaultRouter()
 # router.register('members', MemberList)
-router.register('members', MemberViewSet)
+router.register('members', MemberViewSet, base_name='members')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
