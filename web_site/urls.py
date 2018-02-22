@@ -31,4 +31,5 @@ urlpatterns = [
     path('hello/', hello_world),
     # path('api/members/', MemberList.as_view()),
     path('api/', include(router.urls)),
+    path('api-autho/', include('rest_framework.urls', namespace='rest_framework')),
 ]

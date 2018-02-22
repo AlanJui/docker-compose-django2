@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Member
 from .serializers import MemberSerializer
@@ -26,3 +27,4 @@ class MemberList(APIView):
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+    permission_classes = (IsAuthenticated,)
