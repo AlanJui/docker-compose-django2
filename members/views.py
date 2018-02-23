@@ -17,6 +17,12 @@ def hello_world(request):
 # RESTful API
 #========================================
 
+class MemberViewSet(viewsets.ModelViewSet):
+    queryset = Member.objects.all()
+    serializer_class = MemberSerializer
+    permission_classes = (IsAuthenticated,)
+
+
 class MemberList(APIView):
 
     def get(self, request):
@@ -24,7 +30,3 @@ class MemberList(APIView):
         serializer = MemberSerializer(member_list, many=True)
         return Response(serializer.data)
 
-class MemberViewSet(viewsets.ModelViewSet):
-    queryset = Member.objects.all()
-    serializer_class = MemberSerializer
-    permission_classes = (IsAuthenticated,)
